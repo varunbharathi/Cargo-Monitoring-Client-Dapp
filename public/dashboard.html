@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+   <!-- Bootstrap CSS CDN Link -->
+   <link rel="stylesheet" href="bootstrap.css" >
+   <title>DCargo: Dashboard</title>
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Font Awsome CDN for Kit -->
+    <script src="https://kit.fontawesome.com/e426e81f70.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="dashboard-styles.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/x-icon" href="favicon.png" />
+   </head>
+
+
+<body>
+  <div class="sidebar close" id="closeCus">
+    <div class="logo-details">
+      <i class="fa-brands fa-connectdevelop"></i>
+      <span class="logo_name">Cargo Tracker</span>
+    </div>
+    <ul class="nav-links">
+      
+      <li>
+        <a href="#" onclick="showCardsOnDashboardClick()">
+          <i class="fa-duotone fa-gauge"></i>
+          <span class="link_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" onclick="showCardsOnAlertDashboardClick()">
+          <i class="fa-brands fa-hive"></i>
+          <span class="link_name">Block Chain Dashboard</span>
+        </a>
+      </li>
+      
+<!--       
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Category</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Category</a></li>
+          <li><a href="#">HTML & CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">PHP & MySQL</a></li>
+        </ul>
+      </li>
+       -->
+      <li>
+        <div class="profile-details">
+          <div class="profile-content">
+            <img id="user-photo" src="" alt="">
+          </div>
+          <div class="name-job">
+            <div id="user-name" class="profile_name"></div>
+            <div id="user-email" class="job">Admin</div>
+          </div>
+          <a onclick="LogoutUser()"href="#">
+          <i class='bx bx-log-out' ></i>
+          </a>
+        </div>
+      </li>
+   
+      
+</ul>
+  </div>
+
+
+  <section class="home-section">
+    
+    <div class="home-content">
+      <div style="display:block">  <i class='bx bx-menu' ></i> </div>
+    
+      <div class="actual-content">
+       
+          <h1 class="text-center" id ="heading"> </h1>
+
+          <div id="content-body">
+            
+            <!-- here goes content body -->
+          </div>
+
+          <div id="cargo-analytics-content">
+
+            <div class="row justify-content-around">
+              <div class="col-6 text-center graph" id="temperatureChart">
+                
+              </div>
+              <div class="col-6 text-center graph"  id="humidityChart">
+                
+              </div>
+            </div>
+
+            <div class="row justify-content-center"> 
+              <div class="col-12 text-center maps" id="maps">  </div>
+            </div>
+
+        <div id="threshold-form">
+        <div class="row justify-content-around"> 
+          <div class="col-3 text-center" id="thresholdtext"> 
+            <span>Set Threshold</span>
+          </div>
+          <div class="col-3 text-center"> 
+            <input type="text" class="form-control" id="tempThreshold" placeholder="Temp. in C">
+          </div>
+          <div class="col-3 text-center"> 
+            <input type="text" class="form-control" id="humiThreshold" placeholder="Humidity in %">
+          </div>
+   </div>
+  
+        <div class="row justify-content-center"> 
+          <div class="col-2 text-center from" id="Button"> 
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+
+        </div>
+        <div class="row justify-content-center"> 
+          <div class="col-6 text-center from" id="Button"> 
+            <span id="current-threshold-text"></span>
+          </div>
+
+        </div>
+      </div>
+
+        </div>
+
+
+          </div>
+
+
+        
+
+      </div>
+    </div>
+  </section>
+  <script>
+  let arrow = document.querySelectorAll(".arrow");
+  for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener("click", (e)=>{
+   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+   arrowParent.classList.toggle("showMenu");
+    });
+  }
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".bx-menu");
+  console.log(sidebarBtn);
+  sidebarBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("close");
+  });
+  </script>
+  <!-- Bootstrap JS CDN links -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-performance.js"></script>
+
+  <!-- CDN for charts by plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+ <!-- module app for importing firebase performance-->
+
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+   https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script src="dashboard-app.js"></script>
+</body>
+</html>
